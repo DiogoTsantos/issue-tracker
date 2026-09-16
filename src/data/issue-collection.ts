@@ -1,4 +1,4 @@
-import { Issue } from '../types/issue';
+import type { Issue } from '../types/issue';
 
 export const issues: Issue[] = [
   {

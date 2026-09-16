@@ -1,4 +1,4 @@
-import { Issue } from "../types/issue";
+import type { Issue } from "../types/issue";
 
 type IssueListProps = {
   issues: Issue[];
@@ -21,7 +21,7 @@ export default function IssueList({ issues, children }: IssueListProps) {
         {
           issues.length === 0 ? (
             <tr>
-              <td colSpan={4}>No issues found.</td>
+              <td colSpan={5}>No issues found.</td>
             </tr>
           ) : (
             issues.map((issue) => (
