@@ -1,6 +1,6 @@
 import IssueList from './components/issue-list';
 import { useState } from 'react';
-import { Issue } from './types/issue';
+import type { Issue } from './types/issue';
 import IssueForm from './components/issue-form';
 
 export function App() {
@@ -10,11 +10,13 @@ export function App() {
   function handleIssueSubmit(issue: Issue) {
     if (issues.some(existingIssue => existingIssue.id === issue.id)) {
       // Update existing issue
-      setIssues(issues.map(existingIssue => existingIssue.id === issue.id ? issue : existingIssue));
+      setIssues( (prevIssues) => prevIssues.map(existingIssue => existingIssue.id === issue.id ? issue : existingIssue));
     } else {
       // Add new issue
-      setIssues([...issues, issue]);
+      setIssues( (prevIssues) => [...prevIssues, issue] );
     }
+
+    setFormInitialIssue(undefined);
   }
 
   function handleIssueEdit(issue: Issue) {

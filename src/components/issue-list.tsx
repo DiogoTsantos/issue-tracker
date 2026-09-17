@@ -1,4 +1,4 @@
-import { Issue } from "../types/issue";
+import type { Issue } from "../types/issue";
 import IssueItem from "./issue-item";
 
 export default function IssueList({ issues, editCallback }: { issues: Issue[]; editCallback: (issue: Issue) => void }) {
