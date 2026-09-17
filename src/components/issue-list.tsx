@@ -1,15 +1,13 @@
-import type { Issue } from "../types/issue";
+import { Issue } from "../types/issue";
+import IssueItem from "./issue-item";
 
-type IssueListProps = {
-  issues: Issue[];
-  children: (issue: Issue) => React.ReactNode;
-};
-
-export default function IssueList({ issues, children }: IssueListProps) {
+export default function IssueList({ issues, editCallback }: { issues: Issue[]; editCallback: (issue: Issue) => void }) {
   return (
     <table className='issue-list'>
       <thead>
         <tr>
+          <th>Actions</th>
+          <th>ID</th>
           <th>Title</th>
           <th>Description</th>
           <th>Status</th>
@@ -21,11 +19,11 @@ export default function IssueList({ issues, children }: IssueListProps) {
         {
           issues.length === 0 ? (
             <tr>
-              <td colSpan={5}>No issues found.</td>
+              <td colSpan={7}>No issues found.</td>
             </tr>
           ) : (
             issues.map((issue) => (
-              children(issue)
+              <IssueItem key={issue.id} issue={issue} editCallback={editCallback} />
             ))
           )
         }

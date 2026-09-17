@@ -9,10 +9,10 @@ type IssuePriority =
   | 'high';
 
 export interface Issue {
-  id: string;
-  title: string;
-  description: string;
-  status: IssueStatus;
-  priority: IssuePriority;
-  createdAt: string;
+  id?: string;
+  title?: string;
+  description?: string;
+  status?: IssueStatus;
+  priority?: IssuePriority;
+  createdAt?: string;
 }
