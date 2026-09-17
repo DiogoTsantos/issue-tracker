@@ -8,13 +8,20 @@ export function App() {
   const [formInitialIssue, setFormInitialIssue] = useState<Issue | undefined>(undefined);
 
   function handleIssueSubmit(issue: Issue) {
-    if (issues.some(existingIssue => existingIssue.id === issue.id)) {
-      // Update existing issue
-      setIssues( (prevIssues) => prevIssues.map(existingIssue => existingIssue.id === issue.id ? issue : existingIssue));
-    } else {
-      // Add new issue
-      setIssues( (prevIssues) => [...prevIssues, issue] );
-    }
+    setIssues((prevIssues) => {
+      const issueExists = prevIssues.some(
+        (existingIssue) => existingIssue.id === issue.id
+      );
+      if (issueExists) {
+        return prevIssues.map(existingIssue => 
+          existingIssue.id === issue.id
+            ? issue
+            : existingIssue
+        );
+      }
+
+      return [...prevIssues, issue];
+    });
 
     setFormInitialIssue(undefined);
   }

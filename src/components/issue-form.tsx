@@ -12,7 +12,7 @@ const emptyIssue: Issue = {
 
 
 export default function IssueForm( {initialIssue, onSubmit}: { initialIssue?: Issue; onSubmit: (issue: Issue) => void }) {
-    const [issue, setIssue] = useState<Issue | null>({ ...initialIssue ?? emptyIssue });
+    const [issue, setIssue] = useState<Issue>({ ...initialIssue ?? emptyIssue });
     const [formProcessed, setFormProcessed] = useState(false);
 
 
